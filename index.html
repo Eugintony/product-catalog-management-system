@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Catalog Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="page-shell">
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">Inventory dashboard</p>
+                <h1>Product Catalog Management System</h1>
+                <p class="page-subtitle">Track products, manage stock, and review performance in one clean workspace.</p>
+            </div>
+        </header>
+
+        <main class="container">
+
+            <section class="panel form-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Product form</p>
+                        <h2>Add / Edit Product</h2>
+                    </div>
+                </div>
+
+                <input type="hidden" id="productId">
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="name">Product Name</label>
+                        <input type="text" id="name" placeholder="Product Name">
+                    </div>
+
+                    <div class="field">
+                        <label for="category">Category</label>
+                        <input type="text" id="category" placeholder="Category">
+                    </div>
+
+                    <div class="field">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" placeholder="Price">
+                    </div>
+
+                    <div class="field">
+                        <label for="stock">Stock</label>
+                        <input type="number" id="stock" placeholder="Stock">
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="brand">Brand</label>
+                        <input type="text" id="brand" placeholder="Brand">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button onclick="saveProduct()">Save Product</button>
+                    <p id="message"></p>
+                </div>
+            </section>
+
+            <section class="panel filter-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Search and filter</p>
+                        <h2>Refine Results</h2>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="search">Search</label>
+                        <input type="text" id="search" placeholder="Search product name">
+                    </div>
+
+                    <div class="field">
+                        <label for="filterCategory">Category</label>
+                        <input type="text" id="filterCategory" placeholder="Category">
+                    </div>
+
+                    <div class="field">
+                        <label for="minPrice">Min Price</label>
+                        <input type="number" id="minPrice" placeholder="Min Price">
+                    </div>
+
+                    <div class="field">
+                        <label for="maxPrice">Max Price</label>
+                        <input type="number" id="maxPrice" placeholder="Max Price">
+                    </div>
+
+                    <div class="field field-full">
+                        <label for="sortOption">Sort By</label>
+                        <select id="sortOption">
+                            <option value="">Sort By</option>
+                            <option value="low">Price Low-High</option>
+                            <option value="high">Price High-Low</option>
+                            <option value="az">Name A-Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions compact-actions">
+                    <button onclick="applyFilters()">Apply Filters</button>
+                    <h3 id="count"></h3>
+                </div>
+            </section>
+
+            <section class="panel stats">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Dashboard</p>
+                        <h2>Overview Cards</h2>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span class="stat-label">Total Products</span>
+                        <strong id="totalProducts" class="stat-value"></strong>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-label">Inventory Value</span>
+                        <strong id="inventoryValue" class="stat-value"></strong>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-label">Most Expensive</span>
+                        <strong id="mostExpensive" class="stat-value"></strong>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-label">Least Expensive</span>
+                        <strong id="leastExpensive" class="stat-value"></strong>
+                    </article>
+                </div>
+
+                <div class="category-card" id="categoryStats"></div>
+            </section>
+
+            <section class="panel table-section">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-label">Product list</p>
+                        <h2>Catalog Table</h2>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Brand</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="productTable"></tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
